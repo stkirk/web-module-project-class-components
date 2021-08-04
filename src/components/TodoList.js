@@ -5,7 +5,16 @@ class ToDoList extends React.Component {
   render() {
     return (
       <div className="todo-list">
-        <ToDo />
+        {this.props.todos.map((todo) => {
+          return (
+            <ToDo
+              key={todo.id}
+              todo={todo}
+              toggleDone={this.props.toggleDone}
+            />
+          );
+        })}
+
         <button className="clear-btn">Clear Finished</button>
       </div>
     );

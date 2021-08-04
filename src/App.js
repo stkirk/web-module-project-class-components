@@ -4,6 +4,20 @@ import React from "react";
 import ToDoList from "./components/TodoList";
 import ToDoForm from "./components/TodoForm";
 
+//dummy data
+const todos = [
+  {
+    name: "laundry",
+    id: 123,
+    done: false,
+  },
+  {
+    name: "groceries",
+    id: 1234,
+    done: false,
+  },
+];
+
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -11,9 +25,20 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [],
+      todos: todos,
     };
   }
+
+  //Change Handlers
+
+  toggleDone = (todoId) => {
+    console.log("Toggling done todo");
+  };
+
+  addItem = (itemName) => {
+    console.log("Adding new item");
+  };
+
   render() {
     return (
       <div className="App">
@@ -21,7 +46,7 @@ class App extends React.Component {
           <h1>To Do List</h1>
           <ToDoForm />
         </div>
-        <ToDoList />
+        <ToDoList todos={this.state.todos} toggleDone={this.toggleDone} />
       </div>
     );
   }
