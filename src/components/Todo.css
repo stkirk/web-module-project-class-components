@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+/* form {
+  display: flex;
+  justify-content: space-evenly;
+} */
