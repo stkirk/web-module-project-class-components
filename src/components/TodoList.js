@@ -15,7 +15,9 @@ class ToDoList extends React.Component {
           );
         })}
 
-        <button className="clear-btn">Clear Finished</button>
+        <button onClick={this.props.clearTodo} className="clear-btn">
+          Clear Finished
+        </button>
       </div>
     );
   }

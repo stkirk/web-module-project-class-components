@@ -5,18 +5,18 @@ import ToDoList from "./components/TodoList";
 import ToDoForm from "./components/TodoForm";
 
 //dummy data
-const todos = [
-  {
-    name: "laundry",
-    id: 123,
-    done: false,
-  },
-  {
-    name: "groceries",
-    id: 1234,
-    done: false,
-  },
-];
+// const todos = [
+//   {
+//     name: "laundry",
+//     id: 123,
+//     done: false,
+//   },
+//   {
+//     name: "groceries",
+//     id: 1234,
+//     done: false,
+//   },
+// ];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -25,7 +25,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: todos,
+      todos: [],
     };
   }
 
@@ -59,6 +59,17 @@ class App extends React.Component {
     });
   };
 
+  clearTodo = () => {
+    console.log("Clearing...");
+
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter((todo) => {
+        return !todo.done;
+      }),
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -66,7 +77,11 @@ class App extends React.Component {
           <h1>To Do List</h1>
           <ToDoForm addTodo={this.addTodo} />
         </div>
-        <ToDoList todos={this.state.todos} toggleDone={this.toggleDone} />
+        <ToDoList
+          todos={this.state.todos}
+          toggleDone={this.toggleDone}
+          clearTodo={this.clearTodo}
+        />
       </div>
     );
   }
