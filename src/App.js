@@ -44,8 +44,19 @@ class App extends React.Component {
     this.setState({ ...this.state, todos: updatedTodos });
   };
 
-  addItem = (itemName) => {
+  addTodo = (todoName) => {
     console.log("Adding new item");
+    //make new todo object
+    const newTodo = {
+      name: todoName,
+      id: Date.now(),
+      done: false,
+    };
+    //todoName passed up from TodoForm input value
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newTodo],
+    });
   };
 
   render() {
@@ -53,7 +64,7 @@ class App extends React.Component {
       <div className="App">
         <div className="header">
           <h1>To Do List</h1>
-          <ToDoForm />
+          <ToDoForm addTodo={this.addTodo} />
         </div>
         <ToDoList todos={this.state.todos} toggleDone={this.toggleDone} />
       </div>
