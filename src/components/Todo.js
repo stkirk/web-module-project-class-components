@@ -4,10 +4,10 @@ class ToDo extends React.Component {
   render() {
     return (
       <div
-        className={`todo ${this.props.todo.done ? "done" : ""}`}
+        className={`todo ${this.props.todo.completed ? "completed" : ""}`}
         onClick={() => this.props.toggleDone(this.props.todo.id)}
       >
-        <p>{this.props.todo.name}</p>
+        <p>{this.props.todo.task}</p>
       </div>
     );
   }

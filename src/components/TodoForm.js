@@ -4,17 +4,17 @@ class ToDoForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoName: "",
+      todoTask: "",
     };
   }
   handleSubmit = (evt) => {
     evt.preventDefault();
-    //pass todoName from input field upstream to App
-    this.props.addTodo(this.state.todoName);
+    //pass todoTask from input field upstream to App
+    this.props.addTodo(this.state.todoTask);
     //clear input field
     this.setState({
       ...this.state,
-      todoName: "",
+      todoTask: "",
     });
   };
 
@@ -22,7 +22,7 @@ class ToDoForm extends React.Component {
     // console.log("input change", evt.target.value);
     this.setState({
       ...this.state,
-      todoName: evt.target.value,
+      todoTask: evt.target.value,
     });
   };
   render() {
@@ -31,7 +31,7 @@ class ToDoForm extends React.Component {
         <input
           type="text"
           placeholder="What it do?"
-          value={this.state.todoName}
+          value={this.state.todoTask}
           onChange={this.handleChange}
         />
         <button>Add</button>

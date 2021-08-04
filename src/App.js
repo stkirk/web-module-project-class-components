@@ -7,14 +7,14 @@ import ToDoForm from "./components/TodoForm";
 //dummy data
 // const todos = [
 //   {
-//     name: "laundry",
+//     task: "laundry",
 //     id: 123,
-//     done: false,
+//     completed: false,
 //   },
 //   {
-//     name: "groceries",
+//     task: "groceries",
 //     id: 1234,
-//     done: false,
+//     completed: false,
 //   },
 // ];
 
@@ -32,11 +32,11 @@ class App extends React.Component {
   //Change Handlers
 
   toggleDone = (todoId) => {
-    console.log("Toggling done todo");
+    console.log("Toggling completed todo");
 
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === todoId) {
-        return { ...todo, done: !todo.done };
+        return { ...todo, completed: !todo.completed };
       } else return todo;
     });
     console.log("UpdatedTodos", updatedTodos);
@@ -44,15 +44,15 @@ class App extends React.Component {
     this.setState({ ...this.state, todos: updatedTodos });
   };
 
-  addTodo = (todoName) => {
+  addTodo = (todoTask) => {
     console.log("Adding new item");
     //make new todo object
     const newTodo = {
-      name: todoName,
+      task: todoTask,
       id: Date.now(),
-      done: false,
+      completed: false,
     };
-    //todoName passed up from TodoForm input value
+    //todoTask passed up from TodoForm input value
     this.setState({
       ...this.state,
       todos: [...this.state.todos, newTodo],
@@ -65,7 +65,7 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       todos: this.state.todos.filter((todo) => {
-        return !todo.done;
+        return !todo.completed;
       }),
     });
   };
